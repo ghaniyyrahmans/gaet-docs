@@ -32,3 +32,4 @@ Thumbs.db
 
 # Bun
 .bun-install-cache
+.vercel
