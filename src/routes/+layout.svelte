@@ -59,7 +59,7 @@
       <a class:active={page.url.pathname.startsWith('/docs')} href="/docs/getting-started/quickstart">Documentation</a>
       <a href="/docs/reference/cli">CLI reference</a>
       <a href="/docs/reference/rest-api">API</a>
-      <a href="https://github.com/ghaniyyrahmans/gaet/releases/latest" target="_blank" rel="noreferrer">Download ↗</a>
+      <a href="/docs/getting-started/installation">Download ↗</a>
     </nav>
     <div class="header-actions">
       <button bind:this={searchTrigger} class="search-trigger" type="button" onclick={openSearch} aria-label="Search documentation"><span>Search docs</span><kbd>⌘ K</kbd></button>
@@ -76,7 +76,7 @@
     {#each navigation as group}
       <div class="mobile-group"><p>{group.label}</p>{#each group.items as item}<a href={item.href} onclick={closeMenu}>{item.title}</a>{/each}</div>
     {/each}
-    <div class="mobile-group"><a href="https://github.com/ghaniyyrahmans/gaet/releases/latest" target="_blank" rel="noreferrer" onclick={closeMenu}>Download latest ↗</a></div>
+    <div class="mobile-group"><a href="/docs/getting-started/installation" onclick={closeMenu}>Download latest ↗</a></div>
   </div>
 {/if}
 

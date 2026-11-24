@@ -35,7 +35,7 @@
         <a class="hero-step" href="/docs/reference/cli#push"><code>gaet push</code><span>Snapshot to a remote</span></a>
         <a class="hero-step" href="/docs/reference/cli#status"><code>gaet status</code><span>Compare both sides</span></a>
       </div>
-      <div class="hero-card-foot"><span>CLI</span><span>Dashboard</span><span>SDK</span><a class="hero-download" href="https://github.com/ghaniyyrahmans/gaet/releases/latest" target="_blank" rel="noreferrer">Download latest <span aria-hidden="true">↗</span></a></div>
+      <div class="hero-card-foot"><span>CLI</span><span>Dashboard</span><span>SDK</span><a class="hero-download" href="/docs/getting-started/installation">Download latest <span aria-hidden="true">↗</span></a></div>
     </div>
   </div>
 </section>

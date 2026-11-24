@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gaet-docs.vercel.app/sitemap.xml
+Sitemap: https://gaet.ghaniyyirrahmans.me/sitemap.xml
