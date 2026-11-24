@@ -1,0 +1,22 @@
+{
+  "name": "gaet-docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
+    "lint": "prettier --check ."
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^4.0.0",
+    "@sveltejs/kit": "^2.47.0",
+    "@sveltejs/vite-plugin-svelte": "^6.1.0",
+    "prettier": "^3.6.2",
+    "svelte": "^5.39.0",
+    "svelte-check": "^4.3.1",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.7"
+  }
+}
