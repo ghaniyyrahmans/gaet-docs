@@ -1,8 +1,15 @@
 <script lang="ts">
   import { commands, navigation, quickLinks } from '$lib/data';
+  import { page } from '$app/state';
 </script>
 
-<svelte:head><title>Gaet | PostgreSQL backup documentation</title></svelte:head>
+<svelte:head>
+  <title>Gaet | PostgreSQL backup documentation</title>
+  <meta name="description" content="Official Gaet documentation — set up, operate, and understand PostgreSQL backups and restores with the Gaet CLI toolkit." />
+  <meta property="og:title" content="Gaet | PostgreSQL backup documentation" />
+  <meta property="og:description" content="Official Gaet documentation — set up, operate, and understand PostgreSQL backups and restores with the Gaet CLI toolkit." />
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"WebSite","name":"Gaet Documentation","url":"${page.url.origin}","description":"Official Gaet documentation for PostgreSQL backup and restore."}`}</script>
+</svelte:head>
 
 <section class="hero-band">
   <div class="home-hero page-shell">

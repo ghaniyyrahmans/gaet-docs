@@ -37,7 +37,18 @@
 
 <svelte:head>
   <meta name="theme-color" content="#f7fafb" />
-  <meta name="description" content="The official documentation for Gaet, a PostgreSQL backup and restore toolkit." />
+  <link rel="canonical" href={`${page.url.origin}${page.url.pathname}`} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gaet Documentation" />
+  <meta property="og:description" content="The official documentation for Gaet, a PostgreSQL backup and restore toolkit." />
+  <meta property="og:url" content={`${page.url.origin}${page.url.pathname}`} />
+  <meta property="og:site_name" content="Gaet Documentation" />
+  <meta property="og:image" content={`${page.url.origin}/logo/gaet-lfw.svg`} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gaet Documentation" />
+  <meta name="twitter:description" content="The official documentation for Gaet, a PostgreSQL backup and restore toolkit." />
+  <meta name="twitter:image" content={`${page.url.origin}/logo/gaet-lfw.svg`} />
+  <meta name="robots" content="index, follow" />
 </svelte:head>
 
 <a class="skip-link" href="#main-content">Skip to content</a>

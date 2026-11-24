@@ -108,7 +108,13 @@
   const title = $derived(isWhatIs ? 'What is Gaet?' : isInstallation ? 'Installation' : isQuickstart ? 'Quickstart' : isConfiguration ? 'Configuration' : isPush ? 'Push a backup' : isFetch ? 'Fetch from a remote' : isRestore ? 'Restore a snapshot' : isAutomatic ? 'Automatic backups' : isTroubleshooting ? 'Troubleshooting' : isUtilities ? 'CLI utilities' : isCli ? 'CLI reference' : isEnvironment ? 'Environment variables' : isApi ? 'REST API' : isSdk ? 'TypeScript SDK' : isResponses ? 'REST API responses' : isSecurity ? 'Security and safety' : isCiCd ? 'CI/CD integration' : isLifecycle ? 'Updating and uninstalling' : isContributing ? 'Contributing' : isArchitecture ? 'Architecture' : path.split('/').pop()?.replaceAll('-', ' ') ?? 'Documentation');
 </script>
 
-<svelte:head><title>{title} · Gaet Documentation</title></svelte:head>
+<svelte:head>
+  <title>{title} · Gaet Documentation</title>
+  <meta name="description" content={title ? `${title} — Gaet Documentation` : 'Gaet Documentation'} />
+  <meta property="og:title" content={title ? `${title} · Gaet Documentation` : 'Gaet Documentation'} />
+  <meta property="og:description" content={title ? `${title} — Gaet Documentation` : 'Gaet Documentation'} />
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"${page.url.origin}"},{"@type":"ListItem","position":2,"name":"Documentation","item":"${page.url.origin}/docs"},{"@type":"ListItem","position":3,"name":"${title}","item":"${page.url.href}"}]}`}</script>
+</svelte:head>
 <div class="docs-layout page-shell">
   <aside class="docs-sidebar" aria-label="Documentation navigation">{#each navigation as group}<div class="sidebar-group"><p>{group.label}</p>{#each group.items as item}<a class:current={path === item.href} href={item.href}>{item.title}</a>{/each}</div>{/each}</aside>
   <article class="article" use:addCopyButtons><div class="breadcrumbs"><a href="/">Home</a><span>/</span><span>Documentation</span><span>/</span><span>{title}</span></div><h1>{title}</h1>
