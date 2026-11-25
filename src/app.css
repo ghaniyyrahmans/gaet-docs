@@ -1188,6 +1188,19 @@ p {
   border-color: var(--teal);
   background: #eef7f5;
 }
+[data-theme="dark"] .callout.info,
+[data-theme="dark"] .callout.success {
+  background: #173640;
+}
+[data-theme="dark"] .callout.info {
+  border-color: #5bb8e8;
+}
+[data-theme="dark"] .callout.success {
+  border-color: #6fd9c7;
+}
+[data-theme="dark"] .article p a {
+  color: #8fd4ef;
+}
 
 .doc-hub {
   display: grid;
