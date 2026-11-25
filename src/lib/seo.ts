@@ -24,19 +24,15 @@ export type PageMeta = {
   h1?: string;
 };
 
-/**
- * One unique title and description per indexable route. Descriptions are kept
- * between 120 and 160 characters so search results do not truncate the value
- * proposition, and every entry leads with the query it targets.
- */
+/** Descriptions stay between 120 and 160 characters. */
 export const pageMeta: Record<string, PageMeta> = {
   "/": {
-    title: "Gaet — PostgreSQL Backup and Restore CLI",
+    title: "Gaet: PostgreSQL Backup and Restore CLI",
     description:
       "Official Gaet documentation: install the CLI, connect local and remote PostgreSQL databases, push snapshots, and restore data safely.",
   },
   "/docs": {
-    title: "Gaet Documentation — PostgreSQL Backup Guides",
+    title: "Gaet Documentation: PostgreSQL Backup Guides",
     description:
       "Browse every Gaet guide: quickstart, configuration, push and fetch workflows, restore, scheduling, CLI reference, REST API, and SDK.",
   },
@@ -52,7 +48,7 @@ export const pageMeta: Record<string, PageMeta> = {
     h1: "What is Gaet?",
   },
   "/docs/getting-started/installation": {
-    title: "Install Gaet — PostgreSQL Backup CLI Setup",
+    title: "Install Gaet: PostgreSQL Backup CLI Setup",
     description:
       "Install Gaet on Windows, macOS, or Linux with the install script, package, or Go toolchain, then verify pg_dump, pg_restore, and psql.",
     h1: "Install Gaet on Linux, macOS, or Windows",

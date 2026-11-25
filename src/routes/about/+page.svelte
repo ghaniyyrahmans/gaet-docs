@@ -30,7 +30,6 @@
 
 <section class="quick-section page-shell about-page">
   <div class="section-heading">
-    <p class="overline">About</p>
     <h1>About Gaet and this documentation</h1>
     <p class="article-lede">Gaet is an open-source command-line tool for moving PostgreSQL databases between a local instance and a remote one, with a timestamped snapshot kept at every step. This site is its official documentation.</p>
   </div>
