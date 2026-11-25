@@ -51,17 +51,17 @@
 
     if (/win32|win64|windows|win32/i.test(ua)) {
       platform = 'Windows';
-      cmd = "irm https://raw.githubusercontent.com/ghaniyyrahmans/gaet/lts/v1.1/install.ps1 | iex";
+      cmd = "irm https://github.com/ghaniyyrahmans/gaet/releases/latest/download/install.ps1 | iex";
     } else if (/macintosh|mac os x/i.test(ua)) {
       if (/arm64|apple silicon/i.test(ua) || navigator.platform?.includes('arm')) {
         platform = 'macOS Apple Silicon';
       } else {
         platform = 'macOS Intel';
       }
-      cmd = "curl -sSL https://raw.githubusercontent.com/ghaniyyrahmans/gaet/lts/v1.1/install.sh | bash";
+      cmd = "curl -sSL https://github.com/ghaniyyrahmans/gaet/releases/latest/download/install.sh | bash";
     } else if (/linux|x11/i.test(ua)) {
       platform = 'Linux';
-      cmd = "curl -sSL https://raw.githubusercontent.com/ghaniyyrahmans/gaet/lts/v1.1/install.sh | bash";
+      cmd = "curl -sSL https://github.com/ghaniyyrahmans/gaet/releases/latest/download/install.sh | bash";
     }
 
     detectedPlatform = platform;
@@ -290,12 +290,13 @@ psql --version</code></pre>
         <h2 id="install-script">Install script</h2>
         <div class="install-method">
           <h3>Linux and macOS</h3>
-          <pre><code>curl -sSL https://raw.githubusercontent.com/ghaniyyrahmans/gaet/lts/v1.1/install.sh | bash</code></pre>
+          <pre><code>curl -sSL https://github.com/ghaniyyrahmans/gaet/releases/latest/download/install.sh | bash</code></pre>
         </div>
         <div class="install-method">
           <h3>Windows PowerShell</h3>
-          <pre><code>irm https://raw.githubusercontent.com/ghaniyyrahmans/gaet/lts/v1.1/install.ps1 | iex</code></pre>
+          <pre><code>irm https://github.com/ghaniyyrahmans/gaet/releases/latest/download/install.ps1 | iex</code></pre>
         </div>
+        <p>The installer ships as an asset of each release, so these commands fetch the script pinned to the latest version. To install an older version, run the <code>install.sh</code> or <code>install.ps1</code> asset from that release instead.</p>
       </section>
 
       <section class="install-section">
@@ -357,13 +358,13 @@ go build -ldflags="-s -w" -o ~/.local/bin/gaet ./cmd/gaet</code></pre>
       <pre><code>pg_dump --version
 pg_restore --version
 psql --version</code></pre>
-      <div class="callout"><strong>Source of truth</strong><p>These docs describe the Go engine on the <code>lts/v1.1</code> branch. When behavior and a page disagree, verify with <code>gaet doctor</code> and <code>gaet status</code>, then report the page.</p></div>
+      <div class="callout"><strong>Source of truth</strong><p>These docs describe the current Go release. When behavior and a page disagree, verify with <code>gaet doctor</code> and <code>gaet status</code>, then report the page.</p></div>
 
       <h2>Step 1: Install Gaet</h2>
       <p>The install script places the binary in a user-local directory and adds a launcher:</p>
-      <pre><code>curl -sSL https://raw.githubusercontent.com/ghaniyyrahmans/gaet/lts/v1.1/install.sh | bash</code></pre>
+      <pre><code>curl -sSL https://github.com/ghaniyyrahmans/gaet/releases/latest/download/install.sh | bash</code></pre>
       <p>On Windows PowerShell, use the matching script:</p>
-      <pre><code>irm https://raw.githubusercontent.com/ghaniyyrahmans/gaet/lts/v1.1/install.ps1 | iex</code></pre>
+      <pre><code>irm https://github.com/ghaniyyrahmans/gaet/releases/latest/download/install.ps1 | iex</code></pre>
       <p>Confirm the binary is available before continuing:</p>
       <pre><code>gaet --version</code></pre>
       <p>Prefer a package or a manual archive? Use the <a href="/docs/getting-started/installation">installation page</a>.</p>
