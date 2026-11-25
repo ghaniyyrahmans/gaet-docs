@@ -15,7 +15,7 @@ Key facts:
 
 - [Quickstart](https://gaet.ghaniyyirrahmans.me/docs/getting-started/quickstart): Install Gaet, run `gaet init`, and create the first snapshot.
 - [What is Gaet?](https://gaet.ghaniyyirrahmans.me/docs/getting-started/what-is-gaet): How push, fetch, and restore move PostgreSQL data.
-- [Installation](https://gaet.ghaniyyirrahmans.me/docs/getting-started/installation): Install scripts, packages, and binaries for Linux, macOS, and Windows.
+- [Installation](https://gaet.ghaniyyirrahmans.me/docs/getting-started/installation): Install scripts, npm SDK, packages, and binaries for Linux, macOS, and Windows.
 - [Configuration](https://gaet.ghaniyyirrahmans.me/docs/user-guide/configuration): Local and remote PostgreSQL connection settings.
 - [Push a backup](https://gaet.ghaniyyirrahmans.me/docs/user-guide/push-backups): Dump, validate, snapshot, and restore to a remote database.
 - [Fetch from a remote](https://gaet.ghaniyyirrahmans.me/docs/user-guide/fetch): Copy a remote database into the local database.

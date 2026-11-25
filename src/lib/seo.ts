@@ -50,7 +50,7 @@ export const pageMeta: Record<string, PageMeta> = {
   "/docs/getting-started/installation": {
     title: "Install Gaet: PostgreSQL Backup CLI Setup",
     description:
-      "Install Gaet on Windows, macOS, or Linux with the install script, package, or Go toolchain, then verify pg_dump, pg_restore, and psql.",
+      "Install Gaet on Linux, macOS, or Windows with the CLI script or package, add the npm SDK for Node.js, then verify pg_dump, pg_restore, and psql.",
     h1: "Install Gaet on Linux, macOS, or Windows",
   },
   "/docs/getting-started/quickstart": {

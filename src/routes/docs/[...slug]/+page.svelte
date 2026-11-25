@@ -299,6 +299,20 @@ psql --version</code></pre>
       </section>
 
       <section class="install-section">
+        <h2 id="install-sdk">Install the TypeScript SDK</h2>
+        <p>The npm package is a client for <code>gaet serve</code>, not the CLI binary. Install the CLI separately if you want to run backups from a terminal.</p>
+        <pre><code>npm install @ghaniyyrahmans/gaet</code></pre>
+        <p>The same package is available through other package managers:</p>
+        <pre><code>pnpm add @ghaniyyrahmans/gaet
+yarn add @ghaniyyrahmans/gaet
+bun add @ghaniyyrahmans/gaet</code></pre>
+        <p>Start the local service before calling the SDK:</p>
+        <pre><code>gaet serve</code></pre>
+        <p>The default endpoint is <code>http://127.0.0.1:6161</code>. The <a href="/docs/reference/sdk">TypeScript SDK guide</a> has client methods and examples.</p>
+        <p>The package used to be published as <code>@ghanirahmans/gaet</code>. The API did not change, only the scope did. Remove the old package before installing the new one.</p>
+      </section>
+
+      <section class="install-section">
         <h2 id="build-from-source">Build from source</h2>
         <p>With Go toolchain:</p>
         <pre><code>go install github.com/ghaniyyrahmans/gaet/cmd/gaet@latest</code></pre>
@@ -845,6 +859,7 @@ gaet check --json</code></pre>
       <a href="#before-you-start">Before you start</a>
       <a href="#downloads-by-platform">Downloads by platform</a>
       <a href="#install-script">Install script</a>
+      <a href="#install-sdk">Install the SDK</a>
       <a href="#build-from-source">Build from source</a>
       <a href="#verify-installation">Verify installation</a>
       <a href="#initialize-workspace">Initialize workspace</a>
