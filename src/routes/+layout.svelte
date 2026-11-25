@@ -2,10 +2,24 @@
   import '../app.css';
   import { navigation } from '$lib/data';
   import { page } from '$app/state';
+  import { metaFor, absoluteUrl, OG_IMAGE_PATH, SITE_NAME, SITE_URL, LAST_UPDATED } from '$lib/seo';
   import { onMount, tick } from 'svelte';
   import { searchItems } from '$lib/data';
 
   let { children } = $props();
+
+  const indexable = $derived(page.status < 400);
+  const meta = $derived(
+    indexable
+      ? metaFor(page.url.pathname)
+      : {
+          title: "Page not found | Gaet",
+          description: "This page is not part of the Gaet documentation.",
+        },
+  );
+  const canonicalUrl = $derived(absoluteUrl(page.url.pathname));
+  const ogImage = `${SITE_URL}${OG_IMAGE_PATH}`;
+  const isArticle = $derived(page.url.pathname.startsWith("/docs/"));
 
   let menuOpen = $state(false);
   let searchOpen = $state(false);
@@ -36,19 +50,33 @@
 </script>
 
 <svelte:head>
-  <meta name="theme-color" content="#f7fafb" />
-  <link rel="canonical" href={`${page.url.origin}${page.url.pathname}`} />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Gaet Documentation" />
-  <meta property="og:description" content="The official documentation for Gaet, a PostgreSQL backup and restore toolkit." />
-  <meta property="og:url" content={`${page.url.origin}${page.url.pathname}`} />
-  <meta property="og:site_name" content="Gaet Documentation" />
-  <meta property="og:image" content={`${page.url.origin}/logo/gaet-lfw.svg`} />
+  <meta name="theme-color" content="#f7fafb" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0d2029" media="(prefers-color-scheme: dark)" />
+  <title>{meta.title}</title>
+  <meta name="description" content={meta.description} />
+  {#if indexable}
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+  {:else}
+    <meta name="robots" content="noindex, nofollow" />
+  {/if}
+  <meta property="og:type" content={isArticle ? "article" : "website"} />
+  {#if isArticle}<meta property="article:modified_time" content={LAST_UPDATED} />{/if}
+  <meta property="og:site_name" content={SITE_NAME} />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content={meta.title} />
+  <meta property="og:description" content={meta.description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Gaet — PostgreSQL backup and restore documentation" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Gaet Documentation" />
-  <meta name="twitter:description" content="The official documentation for Gaet, a PostgreSQL backup and restore toolkit." />
-  <meta name="twitter:image" content={`${page.url.origin}/logo/gaet-lfw.svg`} />
-  <meta name="robots" content="index, follow" />
+  <meta name="twitter:title" content={meta.title} />
+  <meta name="twitter:description" content={meta.description} />
+  <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image:alt" content="Gaet — PostgreSQL backup and restore documentation" />
 </svelte:head>
 
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -56,14 +84,14 @@
   <div class="header-inner">
     <a class="brand" href="/" aria-label="Gaet home"><img class="brand-logo" width="27" height="27" src="/logo/gaet-lft.svg" alt="" /><span>gaet</span></a>
     <nav class="top-nav" aria-label="Primary navigation">
-      <a class:active={page.url.pathname.startsWith('/docs')} href="/docs/getting-started/quickstart">Documentation</a>
+      <a class:active={page.url.pathname.startsWith('/docs')} href="/docs">Documentation</a>
       <a href="/docs/reference/cli">CLI reference</a>
       <a href="/docs/reference/rest-api">API</a>
       <a href="/docs/getting-started/installation">Download ↗</a>
     </nav>
     <div class="header-actions">
-      <button bind:this={searchTrigger} class="search-trigger" type="button" onclick={openSearch} aria-label="Search documentation"><span>Search docs</span><kbd>⌘ K</kbd></button>
-      <button class="theme-trigger" type="button" onclick={toggleTheme} aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}>{theme === 'light' ? 'Dark' : 'Light'}</button>
+      <button bind:this={searchTrigger} class="search-trigger" type="button" onclick={openSearch}><span>Search docs</span><kbd>⌘ K</kbd></button>
+      <button class="theme-trigger" type="button" onclick={toggleTheme}>{theme === 'light' ? 'Dark mode' : 'Light mode'}</button>
       <a class="github-link" href="https://github.com/ghaniyyrahmans/gaet" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
       <button bind:this={menuTrigger} class="menu-trigger" type="button" onclick={() => (menuOpen = !menuOpen)} aria-expanded={menuOpen} aria-controls="mobile-navigation" aria-label="Menu">Menu</button>
     </div>
@@ -93,4 +121,4 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<footer class="site-footer"><div><a class="brand" href="/"><img class="brand-logo" width="27" height="27" src="/logo/gaet-lft.svg" alt="" /><span>gaet</span></a><p>PostgreSQL backup and restore, documented.</p></div><div class="footer-links"><a href="/docs/getting-started/quickstart">Get started</a><a href="/docs/reference/cli">CLI reference</a><a href="https://github.com/ghaniyyrahmans/gaet">GitHub ↗</a></div><small>© 2026 Gaet documentation</small></footer>
+<footer class="site-footer"><div><a class="brand" href="/"><img class="brand-logo" width="27" height="27" src="/logo/gaet-lft.svg" alt="" /><span>gaet</span></a><p>PostgreSQL backup and restore, documented.</p></div><div class="footer-links"><a href="/docs/getting-started/quickstart">Get started</a><a href="/docs/reference/cli">CLI reference</a><a href="/about">About</a><a href="https://github.com/ghaniyyrahmans/gaet">GitHub ↗</a></div><small>© 2026 Gaet documentation</small></footer>

@@ -1,21 +1,47 @@
 <script lang="ts">
   import { commands, navigation, quickLinks } from '$lib/data';
-  import { page } from '$app/state';
+  import {
+    SITE_URL,
+    REPO_URL,
+    jsonLdScript,
+    organizationSchema,
+    websiteSchema,
+  } from '$lib/seo';
+
+  const structuredData = jsonLdScript({
+    "@context": "https://schema.org",
+    "@graph": [
+      organizationSchema(),
+      websiteSchema(),
+      {
+        "@type": "SoftwareApplication",
+        "@id": `${SITE_URL}/#software`,
+        name: "Gaet",
+        applicationCategory: "DeveloperApplication",
+        operatingSystem: "Linux, macOS, Windows",
+        description:
+          "A command-line toolkit that pushes and fetches PostgreSQL databases, validates every dump, and keeps timestamped local snapshots.",
+        url: `${SITE_URL}/`,
+        downloadUrl: `${REPO_URL}/releases/latest`,
+        codeRepository: REPO_URL,
+        license: "https://opensource.org/licenses/MIT",
+        softwareHelp: `${SITE_URL}/docs`,
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        sameAs: [REPO_URL],
+      },
+    ],
+  });
 </script>
 
 <svelte:head>
-  <title>Gaet | PostgreSQL backup documentation</title>
-  <meta name="description" content="Official Gaet documentation — set up, operate, and understand PostgreSQL backups and restores with the Gaet CLI toolkit." />
-  <meta property="og:title" content="Gaet | PostgreSQL backup documentation" />
-  <meta property="og:description" content="Official Gaet documentation — set up, operate, and understand PostgreSQL backups and restores with the Gaet CLI toolkit." />
-  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"WebSite","name":"Gaet Documentation","url":"${page.url.origin}","description":"Official Gaet documentation for PostgreSQL backup and restore."}`}</script>
+  {@html structuredData}
 </svelte:head>
 
 <section class="hero-band">
   <div class="home-hero page-shell">
     <div class="hero-copy">
       <p class="hero-badge"><span class="live-dot"></span> Official documentation</p>
-      <h1>Backups you can <em>find your way back to.</em></h1>
+      <h1>PostgreSQL backups you can <em>find your way back to.</em></h1>
       <p class="hero-lede">Gaet is a PostgreSQL backup and restore toolkit. This is the reference for setting it up, operating it, and understanding what happens under the hood.</p>
       <div class="hero-actions">
         <a class="button button-primary" href="/docs/getting-started/quickstart">Start with the quickstart <span>→</span></a>

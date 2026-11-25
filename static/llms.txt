@@ -1,0 +1,44 @@
+# Gaet
+
+> Gaet is a command-line toolkit for PostgreSQL backup and restore. It dumps a local or remote database with `pg_dump -Fc`, validates the archive with `pg_restore --list`, keeps a timestamped snapshot, and restores the archive to the other database. A local dashboard and a TypeScript SDK wrap the same engine.
+
+Key facts:
+
+- Source and releases: https://github.com/ghaniyyrahmans/gaet
+- Requires `pg_dump`, `pg_restore`, and `psql` on the machine that runs Gaet.
+- Configuration is stored in `~/.gaet/.env` with `0600` permissions; snapshots and logs live in `~/.gaet/backups`.
+- `gaet push` replaces objects in the remote database; `gaet fetch` and `gaet restore` overwrite the local database.
+- Gaet is a snapshot tool, not a replication system. It does not stream changes or provide point-in-time recovery.
+- The dashboard (`gaet serve`, default port 6161) has no built-in authentication.
+
+## Documentation
+
+- [Quickstart](https://gaet.ghaniyyirrahmans.me/docs/getting-started/quickstart): Install Gaet, run `gaet init`, and create the first snapshot.
+- [What is Gaet?](https://gaet.ghaniyyirrahmans.me/docs/getting-started/what-is-gaet): How push, fetch, and restore move PostgreSQL data.
+- [Installation](https://gaet.ghaniyyirrahmans.me/docs/getting-started/installation): Install scripts, packages, and binaries for Linux, macOS, and Windows.
+- [Configuration](https://gaet.ghaniyyirrahmans.me/docs/user-guide/configuration): Local and remote PostgreSQL connection settings.
+- [Push a backup](https://gaet.ghaniyyirrahmans.me/docs/user-guide/push-backups): Dump, validate, snapshot, and restore to a remote database.
+- [Fetch from a remote](https://gaet.ghaniyyirrahmans.me/docs/user-guide/fetch): Copy a remote database into the local database.
+- [Restore a snapshot](https://gaet.ghaniyyirrahmans.me/docs/user-guide/restore): Restore the latest or a specific snapshot.
+- [Automatic backups](https://gaet.ghaniyyirrahmans.me/docs/user-guide/automatic-backups): Schedule recurring backups with systemd, launchd, or Task Scheduler.
+- [Troubleshooting](https://gaet.ghaniyyirrahmans.me/docs/user-guide/troubleshooting): Diagnose PostgreSQL tools, connections, authentication, timeouts, and locks.
+
+## Reference
+
+- [CLI reference](https://gaet.ghaniyyirrahmans.me/docs/reference/cli): Commands, flags, and JSON output.
+- [Environment variables](https://gaet.ghaniyyirrahmans.me/docs/reference/environment): Every `GAET_*` setting, default, and legacy fallback.
+- [REST API](https://gaet.ghaniyyirrahmans.me/docs/reference/rest-api): Endpoints exposed by `gaet serve`.
+- [REST API responses](https://gaet.ghaniyyirrahmans.me/docs/reference/responses): Response shapes for status, snapshots, jobs, logs, and configuration.
+- [TypeScript SDK](https://gaet.ghaniyyirrahmans.me/docs/reference/sdk): Client methods for the local HTTP service.
+- [Security and safety](https://gaet.ghaniyyirrahmans.me/docs/reference/security): Credential handling, TLS, dashboard exposure, and destructive commands.
+- [CI/CD integration](https://gaet.ghaniyyirrahmans.me/docs/reference/ci-cd): Non-interactive flags, exit codes, and pipeline checks.
+
+## Development
+
+- [Architecture](https://gaet.ghaniyyirrahmans.me/docs/development/architecture): Go packages and responsibilities.
+- [Contributing](https://gaet.ghaniyyirrahmans.me/docs/development/contributing): Build, test, and documentation verification.
+- [Updating and uninstalling](https://gaet.ghaniyyirrahmans.me/docs/development/lifecycle): Update or remove Gaet without losing data.
+
+## Project
+
+- [About](https://gaet.ghaniyyirrahmans.me/about): Maintainer, license, support, and how the documentation is verified.
