@@ -187,6 +187,19 @@ export function jsonLdScript(data: unknown) {
 
 export const organizationId = `${SITE_URL}/#organization`;
 export const websiteId = `${SITE_URL}/#website`;
+export const authorId = `${SITE_URL}/#author`;
+export const AUTHOR_NAME = "Ghaniyyir Rahman Sudarsono";
+export const AUTHOR_URL = "https://github.com/ghaniyyrahmans";
+
+export function authorSchema() {
+  return {
+    "@type": "Person",
+    "@id": authorId,
+    name: AUTHOR_NAME,
+    url: AUTHOR_URL,
+    sameAs: [REPO_URL],
+  };
+}
 
 export function organizationSchema() {
   return {

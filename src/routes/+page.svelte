@@ -6,6 +6,8 @@
     jsonLdScript,
     organizationSchema,
     websiteSchema,
+    authorSchema,
+    authorId,
   } from '$lib/seo';
 
   const structuredData = jsonLdScript({
@@ -13,6 +15,7 @@
     "@graph": [
       organizationSchema(),
       websiteSchema(),
+      authorSchema(),
       {
         "@type": "SoftwareApplication",
         "@id": `${SITE_URL}/#software`,
@@ -26,6 +29,7 @@
         codeRepository: REPO_URL,
         license: "https://opensource.org/licenses/MIT",
         softwareHelp: `${SITE_URL}/docs`,
+        author: { "@id": authorId },
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         sameAs: [REPO_URL],
       },

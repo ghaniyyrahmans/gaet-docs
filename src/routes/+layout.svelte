@@ -2,7 +2,7 @@
   import '../app.css';
   import { navigation } from '$lib/data';
   import { page } from '$app/state';
-  import { metaFor, absoluteUrl, OG_IMAGE_PATH, SITE_NAME, SITE_URL, LAST_UPDATED } from '$lib/seo';
+  import { metaFor, absoluteUrl, OG_IMAGE_PATH, SITE_NAME, SITE_URL, LAST_UPDATED, AUTHOR_NAME } from '$lib/seo';
   import { onMount, tick } from 'svelte';
   import { searchItems } from '$lib/data';
 
@@ -121,4 +121,4 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<footer class="site-footer"><div><a class="brand" href="/"><img class="brand-logo" width="27" height="27" src="/logo/gaet-lft.svg" alt="" /><span>gaet</span></a><p>PostgreSQL backup and restore, documented.</p></div><div class="footer-links"><a href="/docs/getting-started/quickstart">Create your first backup</a><a href="/docs/reference/cli">CLI reference</a><a href="/about">About</a><a href="https://github.com/ghaniyyrahmans/gaet">GitHub ↗</a></div><small>© 2026 Gaet documentation</small></footer>
+<footer class="site-footer"><div><a class="brand" href="/"><img class="brand-logo" width="27" height="27" src="/logo/gaet-lft.svg" alt="" /><span>gaet</span></a><p>PostgreSQL backup and restore, documented.</p></div><div class="footer-links"><a href="/docs/getting-started/quickstart">Create your first backup</a><a href="/docs/reference/cli">CLI reference</a><a href="/about">About</a><a href="https://github.com/ghaniyyrahmans/gaet">GitHub ↗</a></div><small>Docs by <a href="/about">{AUTHOR_NAME}</a> · © 2026</small></footer>

@@ -12,6 +12,10 @@
     websiteId,
     organizationSchema,
     websiteSchema,
+    authorSchema,
+    authorId,
+    AUTHOR_NAME,
+    AUTHOR_URL,
     LAST_UPDATED,
     formatUpdated,
   } from '$lib/seo';
@@ -127,6 +131,7 @@
       "@graph": [
         organizationSchema(),
         websiteSchema(),
+        authorSchema(),
         {
           "@type": "TechArticle",
           "@id": `${canonicalUrl}#article`,
@@ -137,7 +142,7 @@
           image: `${SITE_URL}${OG_IMAGE_PATH}`,
           inLanguage: "en",
           isPartOf: { "@id": websiteId },
-          author: { "@id": organizationId },
+          author: { "@id": authorId },
           publisher: { "@id": organizationId },
           dateModified: LAST_UPDATED,
         },
@@ -832,7 +837,7 @@ gaet check --json</code></pre>
     {:else if isCli}
       <p class="article-lede">A practical reference for every command exposed by the Gaet CLI.</p><h2>Global options</h2><pre><code>-q, --quiet | --plain | --json | -y, --yes</code></pre><p>Use <code>gaet help &lt;command&gt;</code> for command-specific help. JSON output is command-specific.</p><h2>Command flags</h2><div class="reference-table"><div><strong>Command</strong><strong>Flags</strong></div><div><code>gaet init</code><span><code>--preset=name</code>, <code>-y</code>, <code>--yes</code></span></div><div><code>gaet push</code><span><code>--dry-run</code>, <code>--json</code>, <code>--auto[=N]</code>, <code>--cron</code>, <code>--notify=URL</code></span></div><div><code>gaet fetch</code><span><code>--dry-run</code>, <code>--json</code>, <code>-y</code>, <code>--yes</code></span></div><div><code>gaet restore</code><span><code>[target|latest]</code>, <code>--dry-run</code>, <code>--json</code>, <code>-y</code>, <code>--yes</code></span></div><div><code>gaet snapshots</code><span><code>--json</code></span></div><div><code>gaet status</code><span><code>--json</code></span></div><div><code>gaet check</code><span><code>--json</code></span></div><div><code>gaet doctor</code><span><code>--json</code></span></div><div><code>gaet diff</code><span><code>--json</code></span></div><div><code>gaet remote</code><span><code>show</code>, <code>set-url</code>, <code>remove</code>, optional URL</span></div><div><code>gaet get</code><span><code>[KEY...]</code>, <code>--list</code>, <code>--json</code></span></div><div><code>gaet set</code><span><code>KEY=value [...]</code></span></div><div><code>gaet auto</code><span><code>[interval_hours]</code>, default 6</span></div><div><code>gaet serve</code><span><code>--port=6161</code>, <code>--host=127.0.0.1</code>, <code>--no-open</code>, <code>--auto</code>, <code>--stop</code></span></div><div><code>gaet log</code><span><code>[N]</code>, <code>--filter=KW</code>, <code>--since=DATE</code>, <code>--follow</code></span></div><div><code>gaet completion</code><span><code>bash</code>, <code>zsh</code>, <code>fish</code>, <code>powershell</code></span></div><div><code>gaet update</code><span><code>--force</code>, <code>-f</code></span></div><div><code>gaet uninstall</code><span><code>--save</code>, <code>-y</code>, <code>--yes</code></span></div></div><h2>Commands</h2><div class="reference-table"><div><strong>Command</strong><strong>Purpose</strong></div><a id="init"><code>gaet init</code><span>Interactive setup wizard</span></a><a id="push" href="/docs/user-guide/push-backups"><code>gaet push</code><span>Backup local database to remote</span></a><a id="fetch" href="/docs/user-guide/fetch"><code>gaet fetch</code><span>Overwrite local database from remote</span></a><a id="restore" href="/docs/user-guide/restore"><code>gaet restore</code><span>Restore a local snapshot</span></a><a id="snapshots"><code>gaet snapshots</code><span>List local snapshots</span></a><a id="status"><code>gaet status</code><span>Show sync status</span></a><a id="check"><code>gaet check</code><span>Validate configuration and connections</span></a><a id="doctor"><code>gaet doctor</code><span>Run a comprehensive health check</span></a><a id="diff"><code>gaet diff</code><span>Compare local and remote table state</span></a><a id="remote"><code>gaet remote</code><span>Manage the remote URL</span></a><a id="get"><code>gaet get</code><span>Read configuration values</span></a><a id="set"><code>gaet set</code><span>Write configuration values</span></a><a id="export"><code>gaet export</code><span>Print configuration as shell exports</span></a><a id="auto"><code>gaet auto</code><span>Enable scheduled backups</span></a><a id="stop"><code>gaet stop</code><span>Stop the backup scheduler</span></a><a id="serve"><code>gaet serve</code><span>Start the web dashboard</span></a><a id="log"><code>gaet log</code><span>View backup history logs</span></a><a id="completion"><code>gaet completion</code><span>Generate shell completion</span></a><a id="update"><code>gaet update</code><span>Update Gaet</span></a><a id="uninstall"><code>gaet uninstall</code><span>Remove Gaet</span></a></div>
     {/if}
-    <p class="page-updated">Last updated <time datetime={LAST_UPDATED}>{formatUpdated()}</time>. Found an error? <a href="https://github.com/ghaniyyrahmans/gaet/issues">Open an issue</a>.</p>
+    <p class="page-updated">Last updated <time datetime={LAST_UPDATED}>{formatUpdated()}</time>. Written and maintained by <a href={AUTHOR_URL}>{AUTHOR_NAME}</a>. Found an error? <a href="https://github.com/ghaniyyrahmans/gaet/issues">Open an issue</a>.</p>
   </article>
   {#if isInstallation}
     <aside class="on-this-page"><p>On this page</p>
